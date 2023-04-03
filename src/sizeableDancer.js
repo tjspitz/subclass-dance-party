@@ -1,16 +1,36 @@
 // Pseudoclassical
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
+var SizeableDancer = function (top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass('blinky');
+  this.$node.attr("src", "./assets/patrickResizing.png");
+  this.$node.addClass("sizeable");
+
+  this.$node.on("mouseenter", function () {
+    $(".sizeable").animate(
+      {
+        width: "10rem",
+        height: "10rem",
+      },
+      500
+    );
+  });
+  this.$node.on("mouseleave", function () {
+    $(".sizeable").animate(
+      {
+        width: "5rem",
+        height: "5rem",
+      },
+      500
+    );
+  });
 };
 
-BlinkyDancer.prototype = Object.create(Dancer.prototype);
-BlinkyDancer.prototype.constructor = BlinkyDancer;
+SizeableDancer.prototype = Object.create(Dancer.prototype);
+SizeableDancer.prototype.constructor = SizeableDancer;
 
-BlinkyDancer.prototype.step = function() {
+SizeableDancer.prototype.step = function () {
   Dancer.prototype.step.call(this);
-  this.$node.toggle();
-}
+  // this.$node.toggle();
+};
 
 // ======================================================================
 // var makeBlinkyDancer = function(top, left, timeBetweenSteps) {

@@ -1,15 +1,19 @@
 // Pseudoclassical
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
+var JumpingDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass('blinky');
+  this.$node = $('<img src="./assets/spongebobJumping.png">');
+  this.$node.addClass('jumping');
+
+  this.setPosition(top, left);
+
 };
 
-BlinkyDancer.prototype = Object.create(Dancer.prototype);
-BlinkyDancer.prototype.constructor = BlinkyDancer;
+JumpingDancer.prototype = Object.create(Dancer.prototype);
+JumpingDancer.prototype.constructor = JumpingDancer;
 
-BlinkyDancer.prototype.step = function() {
+JumpingDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
-  this.$node.toggle();
+  // this.$node.toggle();
 }
 
 // ======================================================================

@@ -1,6 +1,7 @@
 // Pseudoclassical
 var Dancer = function(top, left, timeBetweenSteps) {
-  this.$node = $('<span class="dancer"></span>');
+  this.$node = $('<img src="./assets/blinkyPlankton.png">');
+  this.$node.addClass('dancer');
   this._timeBetweenSteps = timeBetweenSteps;
 
   this.step();
