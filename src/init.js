@@ -1,5 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
+  window.linedUp = false;
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -27,8 +28,10 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
-
-
+  });
+  $('.line-up').on('click', function(event) {
+    linedUp = !linedUp;
+    linedUp ? $('img').css({ position: 'static' }) : $('img').css({ position: 'absolute' });
   });
 });
 

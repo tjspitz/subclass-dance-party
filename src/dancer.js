@@ -12,6 +12,7 @@ Dancer.prototype.step = function() {
   setTimeout(this.step.bind(this), this._timeBetweenSteps);
 };
 Dancer.prototype.setPosition = function(top, left) {
+  top < 33 ? top += 33 : top;
   var styleSettings = {
     top: top,
     left: left
