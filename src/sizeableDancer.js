@@ -1,27 +1,11 @@
 // Pseudoclassical
 var SizeableDancer = function (top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.attr("src", "./assets/patrickResizing.png");
-  this.$node.addClass("sizeable");
+  this.$node.attr('src', './assets/patrickResizing.png');
+  this.$node.removeClass('dancer');
+  this.$node.addClass('sizeable');
 
-  this.$node.on("mouseenter", function () {
-    $(".sizeable").animate(
-      {
-        width: "10rem",
-        height: "10rem",
-      },
-      500
-    );
-  });
-  this.$node.on("mouseleave", function () {
-    $(".sizeable").animate(
-      {
-        width: "5rem",
-        height: "5rem",
-      },
-      500
-    );
-  });
+  this.resizer();
 };
 
 SizeableDancer.prototype = Object.create(Dancer.prototype);
@@ -29,7 +13,23 @@ SizeableDancer.prototype.constructor = SizeableDancer;
 
 SizeableDancer.prototype.step = function () {
   Dancer.prototype.step.call(this);
-  // this.$node.toggle();
+};
+
+SizeableDancer.prototype.resizer = function() {
+  var randLarge = this.randomizer(5, 15);
+  var randSmall = this.randomizer(1, 5);
+  this.$node.animate({
+    width: randLarge + 'rem',
+    height: randLarge + 'rem',
+  }, 500)
+  .animate({
+    width: randSmall + 'rem',
+    height: randSmall + 'rem',
+  }, 500, this.resizer.bind(this));
+};
+
+SizeableDancer.prototype.randomizer = function(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 };
 
 // ======================================================================

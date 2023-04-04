@@ -26,7 +26,7 @@ a:active {
 .title {
   background-color: #777;
 }
-.dancer, .spinning, .jumping, .sizeable {
+.dancer, .blinky, .spinning, .jumping, .sizeable {
   position: absolute;
 }
 .dancer {
@@ -44,8 +44,11 @@ a:active {
 .spinning {
   animation: spin 2s linear infinite;
 }
+.spinning:hover {
+  animation: spin 0.25s linear infinite;
+}
 .jumping {
-  animation: bounce 1s infinite;
+  animation: jump 1s infinite;
   height: 8rem;
   width: 8rem;
 }
@@ -55,7 +58,7 @@ a:active {
   to { transform: rotate(360deg); }
 }
 
-@keyframes bounce {
+@keyframes jump {
   0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
   40% {transform: translateY(-10rem);}
   60% {transform: translateY(-2rem);}
