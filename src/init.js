@@ -28,10 +28,14 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer.$node);
   });
+  
   $('.line-up').on('click', function(event) {
-    linedUp = !linedUp;
-    linedUp ? $('img').css({ position: 'static' }) : $('img').css({ position: 'absolute' });
+    window.linedUp = !linedUp;
+    window.linedUp
+      ? $('img').css({ position: 'static' })
+      : $('img').css({ position: 'absolute' });
   });
 });
 
